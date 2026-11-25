@@ -1,0 +1,9 @@
+.env
+.session-key
+client_session_key.aes
+cookies.txt
+.stack-work/
+monadex.cabal
+dist-newstyle/
+*.hi
+*.o
