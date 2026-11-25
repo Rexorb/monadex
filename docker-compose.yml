@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: monadex_db
+      POSTGRES_USER: monadex
+      POSTGRES_PASSWORD: ${MONADEX_DB_PASSWORD:?Set MONADEX_DB_PASSWORD in .env}
+    ports:
+      - "127.0.0.1:${MONADEX_DB_PORT:-5433}:5432"
+    volumes:
+      - monadex_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U monadex -d monadex_db"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+volumes:
+  monadex_pgdata:

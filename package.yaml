@@ -1,0 +1,58 @@
+name: monadex
+version: 0.1.0.0
+license: BSD-3-Clause
+dependencies:
+- base >= 4.14 && < 5
+- bytestring
+- text
+- time
+- yesod-core
+- yesod-persistent
+- persistent
+- persistent-template
+- persistent-postgresql
+- monad-logger
+- transformers
+- containers
+- mtl
+- random
+- aeson
+- http-conduit
+- http-client
+- cryptonite
+- memory
+- base64-bytestring
+- http-types
+- unix
+- timezone-olson
+- timezone-series
+- wai
+- warp
+- wai-cors
+library:
+  source-dirs: src
+  ghc-options: -Wall
+executables:
+  monadex:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N2
+    dependencies:
+    - monadex
+tests:
+  monadex-test:
+    main: Spec.hs
+    source-dirs: test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N2
+    dependencies:
+    - monadex
+    - hspec
+    - async
+    - yesod-test
+    - wai-extra
